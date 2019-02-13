@@ -1,0 +1,28 @@
+<div class="modal fade" id="modalTranbanc" tabindex="-1" role="dialog" aria-labelledby="modalTranbanc" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Transacciones Bancarias</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="col-sm-12 text-left">
+        	      <input type="text" class="form-control" id="buscar" placeholder="Buscar..."
+                  (keyup)="filtrar( $event.target.value)" autofocus>
+                <table id="tipotrans" class="display table table-striped table-bordered table-condensed"style="width:100%" >
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Código</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

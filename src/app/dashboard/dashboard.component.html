@@ -1,0 +1,43 @@
+<section class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="text-center">
+        <h4>Operaciones Vs. Estados Vs. Tiempos</h4>
+        <h2>PMU Proveedor Tecnológico</h2>
+    </div>
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- microserv Column -->
+        <ng-container matColumnDef="microserv">
+            <th mat-header-cell *matHeaderCellDef> Micro-Servicio </th>
+            <td mat-cell *matCellDef="let data"> {{data.microserv}} </td>
+        </ng-container>
+
+        <!-- proceso Column -->
+        <ng-container matColumnDef="proceso">
+            <th mat-header-cell *matHeaderCellDef> Procesos </th>
+            <td mat-cell *matCellDef="let data"> {{data.proceso}} </td>
+        </ng-container>
+
+        <!-- reciente Column -->
+        <ng-container matColumnDef="reciente">
+            <th mat-header-cell *matHeaderCellDef> Más Reciente </th>
+            <td mat-cell *matCellDef="let data"> {{data.reciente}} </td>
+        </ng-container>
+
+        <!-- antiguo Column -->
+        <ng-container matColumnDef="antiguo">
+            <th mat-header-cell *matHeaderCellDef> Más Antiguo </th>
+            <td mat-cell *matCellDef="let data"> {{data.antiguo}} </td>
+        </ng-container>
+
+        <!-- ultimo Column -->
+        <ng-container matColumnDef="ultimo">
+            <th mat-header-cell *matHeaderCellDef> Último Procesado </th>
+            <td mat-cell *matCellDef="let data"> {{data.ultimo}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</section>

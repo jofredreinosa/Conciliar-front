@@ -1,0 +1,9 @@
+.container-loader{
+  display:inline-block;
+  position:absolute;
+  z-index:99;
+  background: transparent;
+  text-align: center;
+  margin-right:auto;
+
+}

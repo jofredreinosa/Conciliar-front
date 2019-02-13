@@ -1,0 +1,197 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-text">
+                        <h4 class="card-title">Cuentas Bancarias</h4>
+                        <div class="col-md-2">
+                            <a [routerLink]="['/cuenta-bancaria']" class="btn btn-info btn-sm">
+                                <i></i> Regresar
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <form [formGroup]="formCuentas" (keydown.enter)="$event.preventDefault()" (ngSubmit)="enviarDatos()">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-1">
+                                        <div class="form-group">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Número de Cuenta
+                                                    <span class="">*</span>
+                                                </label>
+                                                <input  formControlName="tx_numecuenbanc" class="form-control"
+                                                   type="text"
+                                                   [ngClass]="(formCuentas.controls.tx_numecuenbanc.invalid &&
+                                                     (formCuentas.controls.tx_numecuenbanc.touched || formCuentas.controls.tx_numecuenbanc.dirty))
+                                                   ?'form-control is-invalid':'form-control'"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Descripción de la Cuenta
+                                                    <span class="">*</span>
+                                                </label>
+                                                <input  class="form-control"
+                                                        formControlName="tx_desccuenbanc"
+                                                        type="text"
+                                                        [ngClass]="(formCuentas.controls.tx_desccuenbanc.invalid &&
+                                                          (formCuentas.controls.tx_desccuenbanc.touched || formCuentas.controls.tx_desccuenbanc.dirty))
+                                                        ?'form-control is-invalid':'form-control'"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Código Contable
+                                                    <span class="">*</span>
+                                                </label>
+                                                <input  class="form-control form-control-danger"
+                                                        formControlName="tx_codicontcuba"
+                                                        type="text"
+                                                        [ngClass]="(formCuentas.controls.tx_codicontcuba.invalid &&
+                                                          (formCuentas.controls.tx_codicontcuba.touched || formCuentas.controls.tx_codicontcuba.dirty))
+                                                        ?'form-control is-invalid':'form-control'">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-3 offset-md-1">
+                                      <div class="form-group">
+                                          <div class="form-group ">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <label class="control-label"> Tipo Banco</label>
+                                                      <select class="form-control"
+                                                              formControlName="tx_tipobanco"
+                                                              [ngClass]="(formCuentas.controls.tx_tipobanco.invalid &&
+                                                                (formCuentas.controls.tx_tipobanco.touched || formCuentas.controls.tx_tipobanco.dirty))
+                                                              ?'form-control is-invalid':'form-control'">
+                                                          <option value="" >SELECCIONE</option>
+                                                          <option value="PUBLICO">PUBLICO</option>
+                                                          <option value="PRIVADO">PRIVADO</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3 ">
+                                      <div class="form-group">
+                                          <div class="form-group ">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <label class="control-label"> Tipo Cuenta</label>
+                                                      <select class="form-control"
+                                                              formControlName="tx_tipocuenbanc"
+                                                              [ngClass]="(formCuentas.controls.tx_tipocuenbanc.invalid &&
+                                                                (formCuentas.controls.tx_tipocuenbanc.touched || formCuentas.controls.tx_tipocuenbanc.dirty))
+                                                              ?'form-control is-invalid':'form-control'">
+                                                          <option value="" >SELECCIONE</option>
+                                                          <option value="AHORRO">AHORRO</option>
+                                                          <option value="CORRIENTE">CORRIENTE</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-3 ">
+                                      <div class="form-group">
+                                          <div class="form-group ">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <label class="control-label"> Aplica Impuesto</label>
+                                                      <select class="form-control"
+                                                              formControlName="tx_impucuenta" (change)="activarImpuesto()"
+                                                              [ngClass]="(formCuentas.controls.tx_impucuenta.invalid &&
+                                                                (formCuentas.controls.tx_impucuenta.touched || formCuentas.controls.tx_impucuenta.dirty))
+                                                              ?'form-control is-invalid':'form-control'">
+                                                          <option value="" >SELECCIONE</option>
+                                                          <option value="SI">SI</option>
+                                                          <option value="NO">NO</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <div class="form-group">
+                                          <div class="form-group label-floating">
+                                              <label class="control-label">Porcentaje
+                                                  <span class=""></span>
+                                              </label>
+                                              <input  class="form-control form-control-danger"
+                                                      [formControl]="nu_porcimpu"
+                                                      type="text" [readonly]="inactivo">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-right">
+                        <span *ngIf="mostrarGuardar">
+                            <button *ngIf="!modoEdicion" class="btn btn-success" type="button" [disabled]="formCuentas.invalid && !formCuentas.touched"
+                            (click)="enviarDatos()">
+                                <span class="btn-label">
+                                    <i class=""></i>
+                                </span>
+                                Guardar
+                            </button>
+
+                            <button *ngIf="modoEdicion" class="btn btn-success" type="button" [disabled]="formCuentas.invalid || !formCuentas.touched"
+                            (click)="enviarDatos()">
+                                <span class="btn-label">
+                                    <i class=""></i>
+                                </span>
+                                Actualizar
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="row" *ngIf="formCuentas.invalid">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-header card-header-text">
+                        <div class="text-left alert-danger">
+                            <div *ngIf="formCuentas.controls.tx_numecuenbanc.errors && formCuentas.controls.tx_numecuenbanc.dirty">
+                              El número de cuenta es obligatorio y debe tener 20 dígitos
+                            </div>
+                            <div *ngIf="formCuentas.controls.tx_desccuenbanc.errors && formCuentas.controls.tx_desccuenbanc.dirty">
+                              La descripción de la cuenta es requerida
+                            </div>
+                            <div *ngIf="formCuentas.controls.tx_codicontcuba.errors && formCuentas.controls.tx_codicontcuba.dirty">
+                              El código contable es requerido y debe tener entre 9 y 17 dígitos
+                            </div>
+                            <div *ngIf="formCuentas.controls.tx_tipobanco.errors && formCuentas.controls.tx_tipobanco.dirty">
+                              El tipo de banco es requerido
+                            </div>
+                            <div *ngIf="formCuentas.controls.tx_tipocuenbanc.errors && formCuentas.controls.tx_tipocuenbanc.dirty">
+                              El tipo de cuenta es requerido
+                            </div>
+                            <div *ngIf="formCuentas.controls.tx_impucuenta.errors && formCuentas.controls.tx_impucuenta.dirty">
+                              Aplica impuesto es requerido
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre>
+  Estado Formulario: {{ formCuentas.touched }}
+</pre>

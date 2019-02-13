@@ -1,0 +1,79 @@
+<app-modaltranbanc (onTranBancSelected)="onTranBancSelected($event)"></app-modaltranbanc>
+
+<div class="card text-left">
+  <div class="card-header">
+    Registrar transacciones de Libros
+  </div>
+  <div class="card-body">
+  	<app-loader *ngIf="loading"></app-loader>
+	<form [formGroup]="formTrLibros" (ngSubmit)="enviarDatos()">
+	  <div class="form-row">
+	    <div class="form-group col-md-2">
+	      <label for="tipotran">Tipo de Transacción</label>
+	      <input type="hidden" name="idtipotran" formControlName="idtipotran">
+	      <input type="text" class="form-control" id="tipotran" (blur)="validarTipoTran($event.target.value)"placeholder="Tipo Transacción" formControlName="tipotran"
+          (keydown.alt.l)="buscarTipoTran('tipotran', $event.target.value)" autofocus="true"
+		  [ngClass]="(formTrLibros.controls.tipotran.invalid &&
+                     (formTrLibros.controls.tipotran.touched || formTrLibros.controls.tipotran.dirty))
+                   ?'form-control is-invalid':'form-control'"	
+          >
+	    </div>
+	    <div class="form-group col-md-10">
+	      <label for="desctran">Descripción</label>
+	      <input type="text" class="form-control" id="desctran" placeholder="" [attr.disabled]="true" formControlName="desctran">
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-4">
+	      <label for="numetran">N° Documento Bancario</label>
+	      <input type="text" class="form-control" id="numetran" formControlName="numetran" 
+	      [ngClass]="(formTrLibros.controls.numetran.invalid &&
+                     (formTrLibros.controls.numetran.touched || formTrLibros.controls.numetran.dirty))
+                   ?'form-control is-invalid':'form-control'"
+	      >
+	    </div>
+	    <div class="form-group col-md-4">
+		  <label for="fechatran">Fecha</label>
+		  <input type="date" class="form-control" id="fechatran" placeholder="00/00/0000" formControlName="fechatran"
+		  [ngClass]="(formTrLibros.controls.fechatran.invalid &&
+                     (formTrLibros.controls.fechatran.touched || formTrLibros.controls.fechatran.dirty))
+                   ?'form-control is-invalid':'form-control'">
+		</div>
+	   	<div class="form-group col-md-4 text-right">
+	      <label for="monttran">Monto Transacción</label>
+	      <input type="number" class="form-control text-right" id="monttran" formControlName="monttran"
+	      [ngClass]="(formTrLibros.controls.monttran.invalid &&
+                     (formTrLibros.controls.monttran.touched || formTrLibros.controls.monttran.dirty))
+                   ?'form-control is-invalid':'form-control'">
+	    </div>
+	  </div>
+	 
+    <div class="text-right">
+        <button type="submit" class="btn btn-success" [disabled]="formTrLibros.invalid">
+        	Registrar
+        </button>
+    </div>
+	</form>
+  </div>
+  <div class="card-footer text-muted">
+  		<div class="row" *ngIf="formTrLibros.invalid">
+	        <div class="col-md-12">
+		        <div class="text-left alert-danger">
+		        	<div *ngIf="formTrLibros.controls.tipotran.errors && formTrLibros.controls.tipotran.dirty">
+		            	El tipo de transacción es obligatorio
+		            </div>
+		            <div *ngIf="formTrLibros.controls.numetran.errors && formTrLibros.controls.numetran.dirty">
+		            	El número de transacción es obligatorio
+		            </div>
+		            <div *ngIf="formTrLibros.controls.fechatran.errors && formTrLibros.controls.fechatran.dirty">
+		            	La fecha de la transacción es obligatoria
+		            </div>
+		            <div *ngIf="formTrLibros.controls.monttran.errors && formTrLibros.controls.monttran.dirty">
+		            	El monto de la transacción es obligatorio
+		            </div>
+		        </div>
+	        </div>
+        </div>			
+  </div>
+
+</div>
